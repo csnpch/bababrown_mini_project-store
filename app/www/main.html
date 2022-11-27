@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Create a beautiful falling star background easily with Javascript. Lightweight and zero depedency." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400&display=swap" rel="stylesheet" />
+    
+    <meta name="desc" />
+    
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>BaBaBrown</title>
+</head>
+
+<body>
+
+    <section id="hero" class="w-full h-screen">
+        <canvas id="canvas"></canvas>
+
+        <a href="https://www.instagram.com/csnp.ch/" target="_blank" class="tracking-widest z-50 fixed bottom-4 left-4 text-sm text-white font_maaja">( DEV : csnp.ch )</a>
+
+        <div id="qr_error">
+            <div class="text-center mt-20">
+                <h1 class="text-xl xl:text-3xl font-bold text-white">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span class="mt-2 text-red-400">QR Code Error</span>
+                </h1>
+                <p class="text-white">
+                    Please try scan again.
+                </p>
+            </div>
+        </div>
+
+
+        <div id="area_show" class="hidden fixed h-full w-full">
+            <div class="-mt-8 w-full absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <p class="text-indigo-200 underline text-center font_maaja tracking-wider text-2xl">
+                    ข้อความที่ส่งถึงคุณ
+                </p>
+                <p id="message" class="w-[96%] font_maaja mx-auto xl:w-full text-center font-semibold mt-4 text-5xl leading-[54px] text-white">
+                </p>
+            </div>
+            <i id="btnDelMsg" class="active:text-white text-red-400 text-sm cursor-pointer fa-solid fa-trash absolute bottom-4 right-4 px-2 py-1 bg-indigio-800 rounded-full border-white/40 border-2"></i>
+        </div>
+
+
+        <div id="area_noMsg" class="hidden w-full h-full">
+            <div class="-mt-12 w-full absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <p class="w-11/12 xl:w-full mx-auto text-indigo-100 xl:text-center font_maaja tracking-wider text-3xl">
+                    สินค้าตัวนี้ยังไม่มีข้อความ
+                </p>
+                <div class="mt-4 w-full h-full flex flex-row justify-center items-center">
+                    <textarea
+                        id="textAreaMessage" 
+                        type="text" 
+                        class="
+                            font_mail w-11/12 xl:w-4/12 px-4 py-4 rounded-md text-yellow-400 text-xl bg-transparent 
+                            focus:bg-gray-800/80 boder-sky-400 border-2 focus:outline-none focus:border-sky-400 focus:shadow-outline
+                        "
+                        placeholder="เพิ่มข้อความส่งถึงผู้รับกันเถอะ"
+                    ></textarea>
+                </div>
+                <button id="btnUpdateMessage" class="
+                    bg-indigo-600 active:bg-indigo-800 transform active:scale-105 duration-150 text-white 
+                    mt-4 w-11/12 xl:w-4/12 py-2.5 rounded-md mx-auto h-full flex flex-row justify-center 
+                    items-center font_mail text-sm"
+                >
+                    บันทึก
+                </button>
+            </div>
+        </div>
+
+    </section>
+
+
+
+</body>
+</html>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="./assets/js/app.js"></script>
+<script src="./assets/js/tailwind.js"></script>
+<script src="./assets/js/starback.global.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- <script src="https://unpkg.com/vue@3"></script> -->
+
+
+
+<!-- Script for background animate -->
+<script type="text/javascript">
+    
+    const canvas = document.getElementById("canvas");
+
+    const starback = new Starback(canvas, {
+        width: document.body.clientWidth,
+        height: document.body.clientHeight,
+        type: "dot",
+        quantity: 100,
+        direction: 225,
+        backgroundColor: ["#0e1118", "#232b3e"],
+        randomOpacity: true,
+    });
+
+</script>

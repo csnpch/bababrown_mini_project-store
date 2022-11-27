@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenQR | BaBaBrown</title>
+</head>
+<body>
+    
+    <page size="A4">
+        <div id="area_loop_item" class="w-full h-full grid grid-cols-[4cm_4cm_4cm_4cm_4cm] grid-rows-[4cm_4cm_4cm_4cm_4cm_4cm_4cm] justify-center gap-x-1.5" style="padding-top: 2rem !important;">
+        </div>
+    </page>    
+
+    <script src="./assets/js/qrcode.min.js"></script>
+    <script src="./assets/js/genQR.js"></script>
+    <script src="./assets/js/tailwind.js"></script>
+
+    <script type="text/javascript">
+        
+        let areaLoopItem = document.querySelector("#area_loop_item");
+        let strInnerHTML = '';
+        for (let i = 0; i < 35; i++) {
+            strInnerHTML += `
+                <div class="relative w-full h-full">
+                    <img src="./assets/img/template_sticker.png" alt="">
+                    <div class="absolute QRcode bg-black w-[55.5px] h-[56px] right-[7.6px] bottom-[18px]"></div>
+                </div>
+            `;
+        }
+        areaLoopItem.innerHTML = strInnerHTML;
+
+        let qrCodeItems = document.querySelectorAll(".QRcode");
+        qrCodeItems.forEach(item => {
+            // random 6 digit
+            let random = Math.floor(Math.random() * 1000000);
+            if (random.length < 6) {
+                random = "0" + random;
+                random = parseInt(random);
+            }
+            new QRCode(item, `http://bababrown.ddns.net:3000/main.html?id=${random}`);
+        });
+        
+    </script>
+
+</body>
+</html>
+
+
+<style>
+    body {
+       background: rgb(204,204,204); 
+    }
+    page[size="A4"] {
+        background: white;
+        width: 21cm;
+        height: 29.7cm;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 0.5cm;
+        box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+    }
+    @media print {
+        body, page[size="A4"] {
+            margin: 0;
+            box-shadow: 0;
+        }
+    }
+</style>
